@@ -1,0 +1,1220 @@
+
+
+#algoritmos (boceto1)
+permf = "R U R' U' R' F R2 U' R' U' R U R' F'"
+aux1 = 0
+aux2 = 0
+aux3 = 0
+aux4 = 0
+aux5 = 0
+aux6 = 0
+lol = 1
+y = "y"
+r = "r"
+b = "b"
+o = "o"
+w = "w"
+g = "g"
+"""
+class Esquina:
+
+    def __init__(self, posicion, rotacion):
+        self.posicion = posicion
+        self.rotacion = rotacion
+"""
+
+class Formacion:
+#esta clase es la que define
+#la esquina sin orientar ni posicionar
+
+    def __init__(self, arriba, lado, frente):
+        self.arriba = arriba
+        self.lado = lado
+        self.frente = frente
+
+    def posicion (self):
+#define a donde pertenece la esquina
+
+        if self.lado == "b" and self.frente == "r":
+            self.pos = 1
+        elif self.lado == "r" and self.frente == "g":
+            self.pos = 2
+        elif self.lado == "o" and self.frente == "b":
+            self.pos = 3
+        elif self.lado == "g" and self.frente == "o":
+            self.pos = 4
+        elif self.lado == "r" and self.frente == "b":
+            self.pos = 5
+        elif self.lado == "g" and self.frente == "r":
+            self.pos = 6
+        elif self.lado == "b" and self.frente == "o":
+            self.pos = 7
+        elif self.lado == "o" and self.frente == "g":
+            self.pos = 8
+
+    def sgiro_der(self):
+            aux4 = self.lado
+            aux5 = self.arriba
+            aux6 = self.frente
+            self.frente = aux4
+            self.lado = aux5
+            self.arriba = aux6
+
+    def sgiro_izq(self):
+            aux1= self.frente
+            aux2 = self.lado
+            aux3 = self.arriba
+            self.lado = aux1
+            self.arriba = aux2
+            self.frente = aux3
+
+    def camb_ori_temp (self):
+#preparacion para la funcion "posicion"
+
+        if self.ori == 0:
+            self.posicion()
+
+        elif self.ori == 2:
+            self.sgiro_der()
+            self.posicion()
+            self.sgiro_izq()
+
+        elif self.ori == 1:
+            self.sgiro_izq()
+            self.posicion()
+            self.sgiro_der()
+
+
+
+    def orientacion_es(self,n):
+
+#con esta funcion marcamos
+#la orientacion de las esquinas
+
+        if self.arriba == "y" or self.arriba == "w":
+            print "Esquina ", n ,"orientada correctamente"
+            self.ori = 0
+
+        elif self.lado == "y" or self.lado == "w":
+            print "Esquina ", n , "orientada 1"
+            self.ori = 1
+
+        else:
+            print "Esquina ", n , "orientada 2"
+            self.ori = 2
+
+    def orientacion_chk(self):
+
+#Checa la orientacion
+        if self.arriba == "y" or self.arriba == "w":
+            self.ori = 0
+
+        elif self.lado == "y" or self.lado == "w":
+            self.ori = 1
+
+        else:
+            self.ori = 2
+
+
+
+    def giro_der(self):
+            aux4 = self.lado
+            aux5 = self.arriba
+            aux6 = self.frente
+            self.frente = aux4
+            self.lado = aux5
+            self.arriba = aux6
+            print "R' D R D' R' D R D' "
+
+    def giro_izq(self):
+            aux1= self.frente
+            aux2 = self.lado
+            aux3 = self.arriba
+            self.lado = aux1
+            self.arriba = aux2
+            self.frente = aux3
+            print "D R' D' R D R' D' R "
+
+
+    def camb_ori (self):
+#cambiando la orientacion
+
+        if self.ori == 2:
+            self.giro_der()
+
+        elif self.ori == 1:
+            self.giro_izq()
+
+        else:
+            pass
+
+"""
+    def perm_1(self,m):
+
+        if self.pos == m:
+            pass
+
+        elif self.pos == 1:
+            pass
+"""
+
+
+
+esq_pos = [1,2,3,4,5,6,7,8]
+
+pos_gral_clrs = ["w","w","w","w","r","r","r","r","b","b","b","b","o","o","o","o","g","g","g","g","y","y","y","y"]
+
+#introducimos los colores
+#de bloque general
+
+p1 = input("coloque entre comillas dobles el nombre del color 1")
+p2 = input("coloque entre comillas dobles el nombre del color 2")
+p3 = input("coloque entre comillas dobles el nombre del color 3")
+p4 = input("coloque entre comillas dobles el nombre del color 4")
+p5 = input("coloque entre comillas dobles el nombre del color 5")
+p6 = input("coloque entre comillas dobles el nombre del color 6")
+p7 = input("coloque entre comillas dobles el nombre del color 7")
+p8 = input("coloque entre comillas dobles el nombre del color 8")
+p9 = input("coloque entre comillas dobles el nombre del color 9")
+p10 = input("coloque entre comillas dobles el nombre del color 10")
+p11 = input("coloque entre comillas dobles el nombre del color 11")
+p12 = input("coloque entre comillas dobles el nombre del color 12")
+p13 = input("coloque entre comillas dobles el nombre del color 13")
+p14 = input("coloque entre comillas dobles el nombre del color 14")
+p15 = input("coloque entre comillas dobles el nombre del color 15")
+p16 = input("coloque entre comillas dobles el nombre del color 16")
+p17 = input("coloque entre comillas dobles el nombre del color 17")
+p18 = input("coloque entre comillas dobles el nombre del color 18")
+p19 = input("coloque entre comillas dobles el nombre del color 19")
+p20 = input("coloque entre comillas dobles el nombre del color 20")
+p21 = input("coloque entre comillas dobles el nombre del color 21")
+p22 = input("coloque entre comillas dobles el nombre del color 22")
+p23 = input("coloque entre comillas dobles el nombre del color 23")
+p24 = input("coloque entre comillas dobles el nombre del color 24")
+
+pos_gral = [p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24]
+pos_gral_t = (p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24)
+
+
+#Declaramos las esquinas
+#como objetos
+
+Es1 = Formacion (p4,p9,p6)
+Es2 = Formacion (p3,p5,p18)
+Es3 = Formacion (p2,p13,p10)
+Es4 = Formacion (p1,p17,p14)
+Es5 = Formacion (p22,p8,p11)
+Es6 = Formacion (p21,p20,p7)
+Es7 = Formacion (p24,p12,p15)
+Es8 = Formacion (p23,p16,p19)
+
+
+#se imprime la informacion de
+#cual esquina es cual y su orientacion
+
+print(len(pos_gral))
+print pos_gral
+print(len(esq_pos))
+print Es1.arriba, Es1.lado, Es1.frente
+print Es2.arriba, Es2.lado, Es2.frente
+print Es3.arriba, Es3.lado, Es3.frente
+print Es4.arriba, Es4.lado, Es4.frente
+print Es5.arriba, Es5.lado, Es5.frente
+print Es6.arriba, Es6.lado, Es6.frente
+print Es7.arriba, Es7.lado, Es7.frente
+print Es8.arriba, Es8.lado, Es8.frente
+
+
+
+Es1.orientacion_es(1)
+Es2.orientacion_es(2)
+Es3.orientacion_es(3)
+Es4.orientacion_es(4)
+Es5.orientacion_es(5)
+Es6.orientacion_es(6)
+Es7.orientacion_es(7)
+Es8.orientacion_es(8)
+
+def pos_all():
+    Es1.posicion()
+    Es2.posicion()
+    Es3.posicion()
+    Es4.posicion()
+    Es5.posicion()
+    Es6.posicion()
+    Es7.posicion()
+    Es8.posicion()
+
+#Hacemos un listado con las
+#orientaciones en orden relativo
+
+esq_ori = [Es1.ori,Es2.ori,Es3.ori,Es4.ori,Es5.ori,Es6.ori,Es7.ori,Es8.ori]
+print "orientacion:",esq_ori
+
+
+#averiguamos las posiciones de destino
+
+Es1.camb_ori_temp()
+Es2.camb_ori_temp()
+Es3.camb_ori_temp()
+Es4.camb_ori_temp()
+Es5.camb_ori_temp()
+Es6.camb_ori_temp()
+Es7.camb_ori_temp()
+Es8.camb_ori_temp()
+
+#hacemos un listado con las
+#posiciones de destino
+
+esq_pos_dest = [Es1.pos,Es2.pos,Es3.pos,Es4.pos,Es5.pos,Es6.pos,Es7.pos,Es8.pos]
+print "posicion:",esq_pos_dest
+
+
+def orientacion_arriba():
+
+    if Es1.ori+Es2.ori+Es3.ori+Es4.ori == 3 or Es1.ori+Es2.ori+Es3.ori+Es4.ori == 6:
+         Es1.camb_ori()
+         print "U'"
+         Es2.camb_ori()
+         print "U2"
+         Es3.camb_ori()
+         print "U"
+         Es4.camb_ori()
+         print "U2"
+
+
+    elif Es1.ori+Es2.ori+Es3.ori+Es4.ori+1 == 3 or Es1.ori+Es2.ori+Es3.ori+Es4.ori+1 == 6:
+         Es1.camb_ori()
+         print "U'"
+         Es2.camb_ori()
+         print "U2"
+         Es3.camb_ori()
+         print "U"
+         Es4.camb_ori()
+         print "U2 "
+         Es1.giro_izq()
+
+    elif Es1.ori+Es2.ori+Es3.ori+Es4.ori == 0:
+
+        pass
+
+    else:
+         Es1.camb_ori()
+         print "U'"
+         Es2.camb_ori()
+         print "U2"
+         Es3.camb_ori()
+         print "U"
+         Es4.camb_ori()
+         print "U2 "
+         Es1.giro_der()
+
+
+
+def orientacion_abajo():
+    if Es5.ori+Es6.ori+Es7.ori+Es8.ori == 3 or Es5.ori+Es6.ori+Es7.ori+Es8.ori == 6:
+         print "Z2 U'"
+         Es5.camb_ori()
+         print "U"
+         Es6.camb_ori()
+         print "U2"
+         Es7.camb_ori()
+         print "U'"
+         Es8.camb_ori()
+         print "U' Z2"
+
+    elif Es5.ori+Es6.ori+Es7.ori+Es8.ori+1 == 3 or Es5.ori+Es6.ori+Es7.ori+Es8.ori+1 == 6:
+         print "Z2 U'"
+         Es5.camb_ori()
+         print "U"
+         Es6.camb_ori()
+         print "U2"
+         Es7.camb_ori()
+         print "U'"
+         Es8.camb_ori()
+         Es8.giro_izq()
+         print "U' Z2"
+
+    elif Es5.ori+Es6.ori+Es7.ori+Es8.ori == 0:
+        pass
+
+
+    else:
+         print "Z2 U'"
+         Es5.camb_ori()
+         print "U"
+         Es6.camb_ori()
+         print "U2"
+         Es7.camb_ori()
+         print "U'"
+         Es8.camb_ori()
+         Es8.giro_der()
+         print "U' Z2"
+
+esq_act = [Es1.pos, Es2.pos, Es3.pos, Es4.pos, Es5.pos, Es6.pos, Es7.pos, Es8.pos]
+def pos_final():
+
+    if Es1.pos == 1:
+        pass
+    elif Es1.pos == 2:
+        print "U'", permf,"U"
+        aux1=Es1.arriba
+        aux2=Es1.lado
+        aux3=Es1.frente
+        aux4=Es2.arriba
+        aux5=Es2.lado
+        aux6=Es2.frente
+        Es2.arriba=aux1
+        Es2.lado=aux2
+        Es2.frente=aux3
+        Es1.arriba=aux4
+        Es1.lado=aux5
+        Es1.frente=aux6
+    elif Es1.pos == 3:
+        print permf
+        aux1=Es1.arriba
+        aux2=Es1.lado
+        aux3=Es1.frente
+        aux4=Es3.arriba
+        aux5=Es3.lado
+        aux6=Es3.frente
+        Es3.arriba=aux1
+        Es3.lado=aux2
+        Es3.frente=aux3
+        Es1.arriba=aux4
+        Es1.lado=aux5
+        Es1.frente=aux6
+    elif Es1.pos == 4:
+        print "R2 U' R2 U'", permf,"U R2 U R2"
+        aux1=Es1.arriba
+        aux2=Es1.lado
+        aux3=Es1.frente
+        aux4=Es4.arriba
+        aux5=Es4.lado
+        aux6=Es4.frente
+        Es4.arriba=aux1
+        Es4.lado=aux2
+        Es4.frente=aux3
+        Es1.arriba=aux4
+        Es1.lado=aux5
+        Es1.frente=aux6
+    elif Es1.pos == 5 or Es5.pos == 1:
+        print "D2 B2", permf,"B2 D2"
+        aux1=Es1.arriba
+        aux2=Es1.lado
+        aux3=Es1.frente
+        aux4=Es5.arriba
+        aux5=Es5.lado
+        aux6=Es5.frente
+        Es5.arriba=aux1
+        Es5.lado=aux2
+        Es5.frente=aux3
+        Es1.arriba=aux4
+        Es1.lado=aux5
+        Es1.frente=aux6
+    elif Es1.pos == 6 or Es6.pos == 1:
+        print "D' B2", permf,"B2 D"
+        aux1=Es1.arriba
+        aux2=Es1.lado
+        aux3=Es1.frente
+        aux4=Es6.arriba
+        aux5=Es6.lado
+        aux6=Es6.frente
+        Es6.arriba=aux1
+        Es6.lado=aux2
+        Es6.frente=aux3
+        Es1.arriba=aux4
+        Es1.lado=aux5
+        Es1.frente=aux6
+    elif Es1.pos == 7 or Es7.pos == 1:
+        print "D B2", permf,"B2 D'"
+        aux1=Es1.arriba
+        aux2=Es1.lado
+        aux3=Es1.frente
+        aux4=Es7.arriba
+        aux5=Es7.lado
+        aux6=Es7.frente
+        Es7.arriba=aux1
+        Es7.lado=aux2
+        Es7.frente=aux3
+        Es1.arriba=aux4
+        Es1.lado=aux5
+        Es1.frente=aux6
+    elif Es1.pos == 8 or Es8.pos == 1:
+        print "B2", permf,"B2"
+        aux1=Es1.arriba
+        aux2=Es1.lado
+        aux3=Es1.frente
+        aux4=Es8.arriba
+        aux5=Es8.lado
+        aux6=Es8.frente
+        Es8.arriba=aux1
+        Es8.lado=aux2
+        Es8.frente=aux3
+        Es1.arriba=aux4
+        Es1.lado=aux5
+        Es1.frente=aux6
+
+    pos_all()
+    esq_act = [Es1.pos, Es2.pos, Es3.pos, Es4.pos, Es5.pos, Es6.pos, Es7.pos, Es8.pos]
+
+    if Es2.pos == 2:
+        pass
+    elif Es2.pos == 1:
+        print "U'", permf,"U"
+        aux1=Es2.arriba
+        aux2=Es2.lado
+        aux3=Es2.frente
+        aux4=Es1.arriba
+        aux5=Es1.lado
+        aux6=Es1.frente
+        Es1.arriba=aux1
+        Es1.lado=aux2
+        Es1.frente=aux3
+        Es2.arriba=aux4
+        Es2.lado=aux5
+        Es2.frente=aux6
+    elif Es2.pos == 3:
+        print "B2 U' B2", permf,"B2 U B2"
+        aux1=Es2.arriba
+        aux2=Es2.lado
+        aux3=Es2.frente
+        aux4=Es3.arriba
+        aux5=Es3.lado
+        aux6=Es3.frente
+        Es3.arriba=aux1
+        Es3.lado=aux2
+        Es3.frente=aux3
+        Es2.arriba=aux4
+        Es2.lado=aux5
+        Es2.frente=aux6
+    elif Es2.pos == 4:
+        print "U2", permf,"U2"
+        aux1=Es2.arriba
+        aux2=Es2.lado
+        aux3=Es2.frente
+        aux4=Es4.arriba
+        aux5=Es4.lado
+        aux6=Es4.frente
+        Es4.arriba=aux1
+        Es4.lado=aux2
+        Es4.frente=aux3
+        Es2.arriba=aux4
+        Es2.lado=aux5
+        Es2.frente=aux6
+    elif Es2.pos == 5 or Es5.pos == 2:
+        print "U R2 U", permf,"U' R2 U'"
+        aux1=Es2.arriba
+        aux2=Es2.lado
+        aux3=Es2.frente
+        aux4=Es5.arriba
+        aux5=Es5.lado
+        aux6=Es5.frente
+        Es5.arriba=aux1
+        Es5.lado=aux2
+        Es5.frente=aux3
+        Es2.arriba=aux4
+        Es2.lado=aux5
+        Es2.frente=aux6
+    elif Es2.pos == 6 or Es6.pos == 2:
+        print "U2 L2 U", permf,"U' L2 U2"
+        aux1=Es2.arriba
+        aux2=Es2.lado
+        aux3=Es2.frente
+        aux4=Es6.arriba
+        aux5=Es6.lado
+        aux6=Es6.frente
+        Es6.arriba=aux1
+        Es6.lado=aux2
+        Es6.frente=aux3
+        Es2.arriba=aux4
+        Es2.lado=aux5
+        Es2.frente=aux6
+    elif Es2.pos == 7 or Es7.pos == 2:
+        print "B2 U2", permf,"U2 B2"
+        aux1=Es2.arriba
+        aux2=Es2.lado
+        aux3=Es2.frente
+        aux4=Es7.arriba
+        aux5=Es7.lado
+        aux6=Es7.frente
+        Es7.arriba=aux1
+        Es7.lado=aux2
+        Es7.frente=aux3
+        Es2.arriba=aux4
+        Es2.lado=aux5
+        Es2.frente=aux6
+    elif Es2.pos == 8 or Es8.pos == 2:
+        print "U' B2", permf,"B2 U"
+        aux1=Es2.arriba
+        aux2=Es2.lado
+        aux3=Es2.frente
+        aux4=Es8.arriba
+        aux5=Es8.lado
+        aux6=Es8.frente
+        Es8.arriba=aux1
+        Es8.lado=aux2
+        Es8.frente=aux3
+        Es2.arriba=aux4
+        Es2.lado=aux5
+        Es2.frente=aux6
+
+    pos_all()
+    esq_act = [Es1.pos, Es2.pos, Es3.pos, Es4.pos, Es5.pos, Es6.pos, Es7.pos, Es8.pos]
+    if Es3.pos == 3:
+        pass
+    elif Es3.pos == 1:
+        print permf
+        aux1=Es3.arriba
+        aux2=Es3.lado
+        aux3=Es3.frente
+        aux4=Es1.arriba
+        aux5=Es1.lado
+        aux6=Es1.frente
+        Es1.arriba=aux1
+        Es1.lado=aux2
+        Es1.frente=aux3
+        Es3.arriba=aux4
+        Es3.lado=aux5
+        Es3.frente=aux6
+    elif Es3.pos == 2:
+        print "B2 U' B2", permf,"B2 U B2"
+        aux1=Es2.arriba
+        aux2=Es2.lado
+        aux3=Es2.frente
+        aux4=Es3.arriba
+        aux5=Es3.lado
+        aux6=Es3.frente
+        Es3.arriba=aux1
+        Es3.lado=aux2
+        Es3.frente=aux3
+        Es2.arriba=aux4
+        Es2.lado=aux5
+        Es2.frente=aux6
+    elif Es3.pos == 4:
+        print "U", permf,"U'"
+        aux1=Es3.arriba
+        aux2=Es3.lado
+        aux3=Es3.frente
+        aux4=Es4.arriba
+        aux5=Es4.lado
+        aux6=Es4.frente
+        Es4.arriba=aux1
+        Es4.lado=aux2
+        Es4.frente=aux3
+        Es3.arriba=aux4
+        Es3.lado=aux5
+        Es3.frente=aux6
+    elif Es3.pos == 5 or Es5.pos == 3:
+        print "U' R2 U", permf,"U' R2 U"
+        aux1=Es3.arriba
+        aux2=Es3.lado
+        aux3=Es3.frente
+        aux4=Es5.arriba
+        aux5=Es5.lado
+        aux6=Es5.frente
+        Es5.arriba=aux1
+        Es5.lado=aux2
+        Es5.frente=aux3
+        Es3.arriba=aux4
+        Es3.lado=aux5
+        Es3.frente=aux6
+    elif Es3.pos == 6 or Es6.pos == 3:
+        print "F2", permf,"F2"
+        aux1=Es3.arriba
+        aux2=Es3.lado
+        aux3=Es3.frente
+        aux4=Es6.arriba
+        aux5=Es6.lado
+        aux6=Es6.frente
+        Es6.arriba=aux1
+        Es6.lado=aux2
+        Es6.frente=aux3
+        Es3.arriba=aux4
+        Es3.lado=aux5
+        Es3.frente=aux6
+    elif Es3.pos == 7 or Es7.pos == 3:
+        print "U2 R2 U'", permf,"U R2 U2"
+        aux1=Es3.arriba
+        aux2=Es3.lado
+        aux3=Es3.frente
+        aux4=Es7.arriba
+        aux5=Es7.lado
+        aux6=Es7.frente
+        Es7.arriba=aux1
+        Es7.lado=aux2
+        Es7.frente=aux3
+        Es3.arriba=aux4
+        Es3.lado=aux5
+        Es3.frente=aux6
+    elif Es3.pos == 8 or Es8.pos == 3:
+        print "U B2", permf,"U' B2"
+        aux1=Es3.arriba
+        aux2=Es3.lado
+        aux3=Es3.frente
+        aux4=Es8.arriba
+        aux5=Es8.lado
+        aux6=Es8.frente
+        Es8.arriba=aux1
+        Es8.lado=aux2
+        Es8.frente=aux3
+        Es3.arriba=aux4
+        Es3.lado=aux5
+        Es3.frente=aux6
+    pos_all()
+    esq_act = [Es1.pos, Es2.pos, Es3.pos, Es4.pos, Es5.pos, Es6.pos, Es7.pos, Es8.pos]
+
+
+    if Es4.pos == 4:
+
+        pass
+    elif Es4.pos == 1:
+        print "L2 U' L2 U", permf,"U' L2 U L2"
+        aux1=Es4.arriba
+        aux2=Es4.lado
+        aux3=Es4.frente
+        aux4=Es1.arriba
+        aux5=Es1.lado
+        aux6=Es1.frente
+        Es1.arriba=aux1
+        Es1.lado=aux2
+        Es1.frente=aux3
+        Es4.arriba=aux4
+        Es4.lado=aux5
+        Es4.frente=aux6
+    elif Es4.pos == 2:
+        print "U2", permf,"U2"
+        aux1=Es2.arriba
+        aux2=Es2.lado
+        aux3=Es2.frente
+        aux4=Es4.arriba
+        aux5=Es4.lado
+        aux6=Es4.frente
+        Es4.arriba=aux1
+        Es4.lado=aux2
+        Es4.frente=aux3
+        Es2.arriba=aux4
+        Es2.lado=aux5
+        Es2.frente=aux6
+    elif Es4.pos == 3:
+        print "U", permf,"U'"
+        aux1=Es3.arriba
+        aux2=Es3.lado
+        aux3=Es3.frente
+        aux4=Es4.arriba
+        aux5=Es4.lado
+        aux6=Es4.frente
+        Es4.arriba=aux1
+        Es4.lado=aux2
+        Es4.frente=aux3
+        Es3.arriba=aux4
+        Es3.lado=aux5
+        Es3.frente=aux6
+    elif Es4.pos == 5 or Es5.pos == 4:
+        print "R2 U", permf,"U' R2"
+        aux1=Es4.arriba
+        aux2=Es4.lado
+        aux3=Es4.frente
+        aux4=Es5.arriba
+        aux5=Es5.lado
+        aux6=Es5.frente
+        Es5.arriba=aux1
+        Es5.lado=aux2
+        Es5.frente=aux3
+        Es4.arriba=aux4
+        Es4.lado=aux5
+        Es4.frente=aux6
+    elif Es4.pos == 6 or Es6.pos == 4:
+        print "U F2", permf,"F2 U'"
+        aux1=Es4.arriba
+        aux2=Es4.lado
+        aux3=Es4.frente
+        aux4=Es6.arriba
+        aux5=Es6.lado
+        aux6=Es6.frente
+        Es6.arriba=aux1
+        Es6.lado=aux2
+        Es6.frente=aux3
+        Es4.arriba=aux4
+        Es4.lado=aux5
+        Es4.frente=aux6
+    elif Es4.pos == 7 or Es7.pos == 4:
+        print "U' R2 U'", permf,"U R2 U"
+        aux1=Es4.arriba
+        aux2=Es4.lado
+        aux3=Es4.frente
+        aux4=Es7.arriba
+        aux5=Es7.lado
+        aux6=Es7.frente
+        Es7.arriba=aux1
+        Es7.lado=aux2
+        Es7.frente=aux3
+        Es4.arriba=aux4
+        Es4.lado=aux5
+        Es4.frente=aux6
+    elif Es4.pos == 8 or Es8.pos == 4:
+        print "U2 B2", permf,"B2 U2"
+        aux1=Es4.arriba
+        aux2=Es4.lado
+        aux3=Es4.frente
+        aux4=Es8.arriba
+        aux5=Es8.lado
+        aux6=Es8.frente
+        Es8.arriba=aux1
+        Es8.lado=aux2
+        Es8.frente=aux3
+        Es4.arriba=aux4
+        Es4.lado=aux5
+        Es4.frente=aux6
+    pos_all()
+    esq_act = [Es1.pos, Es2.pos, Es3.pos, Es4.pos, Es5.pos, Es6.pos, Es7.pos, Es8.pos]
+
+    if Es5.pos == 5:
+        pass
+    elif Es1.pos == 5 or Es5.pos == 1:
+        print "D2 B2", permf,"B2 D2"
+        aux1=Es1.arriba
+        aux2=Es1.lado
+        aux3=Es1.frente
+        aux4=Es5.arriba
+        aux5=Es5.lado
+        aux6=Es5.frente
+        Es5.arriba=aux1
+        Es5.lado=aux2
+        Es5.frente=aux3
+        Es1.arriba=aux4
+        Es1.lado=aux5
+        Es1.frente=aux6
+    elif Es2.pos == 5 or Es5.pos == 2:
+        print "U R2 U", permf,"U' R2 U'"
+        aux1=Es2.arriba
+        aux2=Es2.lado
+        aux3=Es2.frente
+        aux4=Es5.arriba
+        aux5=Es5.lado
+        aux6=Es5.frente
+        Es5.arriba=aux1
+        Es5.lado=aux2
+        Es5.frente=aux3
+        Es2.arriba=aux4
+        Es2.lado=aux5
+        Es2.frente=aux6
+    elif Es3.pos == 5 or Es5.pos == 3:
+        print "U' R2 U", permf,"U' R2 U"
+        aux1=Es3.arriba
+        aux2=Es3.lado
+        aux3=Es3.frente
+        aux4=Es5.arriba
+        aux5=Es5.lado
+        aux6=Es5.frente
+        Es5.arriba=aux1
+        Es5.lado=aux2
+        Es5.frente=aux3
+        Es3.arriba=aux4
+        Es3.lado=aux5
+        Es3.frente=aux6
+    elif Es4.pos == 5 or Es5.pos == 4:
+        print "R2 U", permf,"U' R2"
+        aux1=Es4.arriba
+        aux2=Es4.lado
+        aux3=Es4.frente
+        aux4=Es5.arriba
+        aux5=Es5.lado
+        aux6=Es5.frente
+        Es5.arriba=aux1
+        Es5.lado=aux2
+        Es5.frente=aux3
+        Es4.arriba=aux4
+        Es4.lado=aux5
+        Es4.frente=aux6
+    elif Es5.pos == 6 or Es6.pos == 5:
+        print "F2 U'", permf,"U F2"
+        aux1=Es5.arriba
+        aux2=Es5.lado
+        aux3=Es5.frente
+        aux4=Es6.arriba
+        aux5=Es6.lado
+        aux6=Es6.frente
+        Es6.arriba=aux1
+        Es6.lado=aux2
+        Es6.frente=aux3
+        Es5.arriba=aux4
+        Es5.lado=aux5
+        Es5.frente=aux6
+    elif Es5.pos == 7 or Es7.pos == 5:
+        print "R2", permf,"R2"
+        aux1=Es5.arriba
+        aux2=Es5.lado
+        aux3=Es5.frente
+        aux4=Es7.arriba
+        aux5=Es7.lado
+        aux6=Es7.frente
+        Es7.arriba=aux1
+        Es7.lado=aux2
+        Es7.frente=aux3
+        Es5.arriba=aux4
+        Es5.lado=aux5
+        Es5.frente=aux6
+    elif Es5.pos == 8 or Es8.pos == 5:
+        print "R2 U B2", permf,"B2 U' R2"
+        aux1=Es5.arriba
+        aux2=Es5.lado
+        aux3=Es5.frente
+        aux4=Es8.arriba
+        aux5=Es8.lado
+        aux6=Es8.frente
+        Es8.arriba=aux1
+        Es8.lado=aux2
+        Es8.frente=aux3
+        Es5.arriba=aux4
+        Es5.lado=aux5
+        Es5.frente=aux6
+    pos_all()
+    esq_act = [Es1.pos, Es2.pos, Es3.pos, Es4.pos, Es5.pos, Es6.pos, Es7.pos, Es8.pos]
+
+
+    if Es6.pos == 6:
+        pass
+    elif Es1.pos == 6 or Es6.pos == 1:
+        print "D' B2", permf,"B2 D"
+        aux1=Es1.arriba
+        aux2=Es1.lado
+        aux3=Es1.frente
+        aux4=Es6.arriba
+        aux5=Es6.lado
+        aux6=Es6.frente
+        Es6.arriba=aux1
+        Es6.lado=aux2
+        Es6.frente=aux3
+        Es1.arriba=aux4
+        Es1.lado=aux5
+        Es1.frente=aux6
+    elif Es2.pos == 6 or Es6.pos == 2:
+        print "U2 L2 U", permf,"U' L2 U2"
+        aux1=Es2.arriba
+        aux2=Es2.lado
+        aux3=Es2.frente
+        aux4=Es6.arriba
+        aux5=Es6.lado
+        aux6=Es6.frente
+        Es6.arriba=aux1
+        Es6.lado=aux2
+        Es6.frente=aux3
+        Es2.arriba=aux4
+        Es2.lado=aux5
+        Es2.frente=aux6
+    elif Es3.pos == 6 or Es6.pos == 3:
+        print "F2", permf,"F2"
+        aux1=Es3.arriba
+        aux2=Es3.lado
+        aux3=Es3.frente
+        aux4=Es6.arriba
+        aux5=Es6.lado
+        aux6=Es6.frente
+        Es6.arriba=aux1
+        Es6.lado=aux2
+        Es6.frente=aux3
+        Es3.arriba=aux4
+        Es3.lado=aux5
+        Es3.frente=aux6
+    elif Es4.pos == 6 or Es6.pos == 4:
+        print "U F2", permf,"F2 U'"
+        aux1=Es4.arriba
+        aux2=Es4.lado
+        aux3=Es4.frente
+        aux4=Es6.arriba
+        aux5=Es6.lado
+        aux6=Es6.frente
+        Es6.arriba=aux1
+        Es6.lado=aux2
+        Es6.frente=aux3
+        Es4.arriba=aux4
+        Es4.lado=aux5
+        Es4.frente=aux6
+    elif Es5.pos == 6 or Es6.pos == 5:
+        print "F2 U'", permf,"U F2"
+        aux1=Es5.arriba
+        aux2=Es5.lado
+        aux3=Es5.frente
+        aux4=Es6.arriba
+        aux5=Es6.lado
+        aux6=Es6.frente
+        Es6.arriba=aux1
+        Es6.lado=aux2
+        Es6.frente=aux3
+        Es5.arriba=aux4
+        Es5.lado=aux5
+        Es5.frente=aux6
+    elif Es6.pos == 7 or Es7.pos == 6:
+        print "R2 U' F2", permf,"F2 U R2"
+        aux1=Es6.arriba
+        aux2=Es6.lado
+        aux3=Es6.frente
+        aux4=Es7.arriba
+        aux5=Es7.lado
+        aux6=Es7.frente
+        Es7.arriba=aux1
+        Es7.lado=aux2
+        Es7.frente=aux3
+        Es6.arriba=aux4
+        Es6.lado=aux5
+        Es6.frente=aux6
+    elif Es6.pos == 8 or Es8.pos == 6:
+        print "D2 R2", permf,"R2 D2"
+        aux1=Es5.arriba
+        aux2=Es5.lado
+        aux3=Es5.frente
+        aux4=Es8.arriba
+        aux5=Es8.lado
+        aux6=Es8.frente
+        Es8.arriba=aux1
+        Es8.lado=aux2
+        Es8.frente=aux3
+        Es5.arriba=aux4
+        Es5.lado=aux5
+        Es5.frente=aux6
+    pos_all()
+    esq_act = [Es1.pos, Es2.pos, Es3.pos, Es4.pos, Es5.pos, Es6.pos, Es7.pos, Es8.pos]
+
+    if Es7.pos == 7:
+        pass
+    elif Es1.pos == 7 or Es7.pos == 1:
+        print "D B2", permf,"B2 D'"
+        aux1=Es1.arriba
+        aux2=Es1.lado
+        aux3=Es1.frente
+        aux4=Es7.arriba
+        aux5=Es7.lado
+        aux6=Es7.frente
+        Es7.arriba=aux1
+        Es7.lado=aux2
+        Es7.frente=aux3
+        Es1.arriba=aux4
+        Es1.lado=aux5
+        Es1.frente=aux6
+    elif Es2.pos == 7 or Es7.pos == 2:
+        print "B2 U2", permf,"U2 B2"
+        aux1=Es2.arriba
+        aux2=Es2.lado
+        aux3=Es2.frente
+        aux4=Es7.arriba
+        aux5=Es7.lado
+        aux6=Es7.frente
+        Es7.arriba=aux1
+        Es7.lado=aux2
+        Es7.frente=aux3
+        Es2.arriba=aux4
+        Es2.lado=aux5
+        Es2.frente=aux6
+    elif Es3.pos == 7 or Es7.pos == 3:
+        print "U2 R2 U'", permf,"U R2 U2"
+        aux1=Es3.arriba
+        aux2=Es3.lado
+        aux3=Es3.frente
+        aux4=Es7.arriba
+        aux5=Es7.lado
+        aux6=Es7.frente
+        Es7.arriba=aux1
+        Es7.lado=aux2
+        Es7.frente=aux3
+        Es3.arriba=aux4
+        Es3.lado=aux5
+        Es3.frente=aux6
+    elif Es4.pos == 7 or Es7.pos == 4:
+        print "U' R2 U'", permf,"U R2 U"
+        aux1=Es4.arriba
+        aux2=Es4.lado
+        aux3=Es4.frente
+        aux4=Es7.arriba
+        aux5=Es7.lado
+        aux6=Es7.frente
+        Es7.arriba=aux1
+        Es7.lado=aux2
+        Es7.frente=aux3
+        Es4.arriba=aux4
+        Es4.lado=aux5
+        Es4.frente=aux6
+    elif Es5.pos == 7 or Es7.pos == 5:
+        print "R2", permf,"R2"
+        aux1=Es5.arriba
+        aux2=Es5.lado
+        aux3=Es5.frente
+        aux4=Es7.arriba
+        aux5=Es7.lado
+        aux6=Es7.frente
+        Es7.arriba=aux1
+        Es7.lado=aux2
+        Es7.frente=aux3
+        Es5.arriba=aux4
+        Es5.lado=aux5
+        Es5.frente=aux6
+    elif Es6.pos == 7 or Es7.pos == 6:
+        print "R2 U' F2", permf,"F2 U R2"
+        aux1=Es6.arriba
+        aux2=Es6.lado
+        aux3=Es6.frente
+        aux4=Es7.arriba
+        aux5=Es7.lado
+        aux6=Es7.frente
+        Es7.arriba=aux1
+        Es7.lado=aux2
+        Es7.frente=aux3
+        Es6.arriba=aux4
+        Es6.lado=aux5
+        Es6.frente=aux6
+    elif Es7.pos == 8 or Es8.pos == 7:
+        print "D' R2", permf,"R2 D"
+        aux1=Es5.arriba
+        aux2=Es5.lado
+        aux3=Es5.frente
+        aux4=Es8.arriba
+        aux5=Es8.lado
+        aux6=Es8.frente
+        Es8.arriba=aux1
+        Es8.lado=aux2
+        Es8.frente=aux3
+        Es5.arriba=aux4
+        Es5.lado=aux5
+        Es5.frente=aux6
+    pos_all()
+    esq_act = [Es1.pos, Es2.pos, Es3.pos, Es4.pos, Es5.pos, Es6.pos, Es7.pos, Es8.pos]
+
+    if Es8.pos == 8:
+        pass
+    elif Es1.pos == 8 or Es8.pos == 1:
+        print "B2", permf,"B2"
+        aux1=Es1.arriba
+        aux2=Es1.lado
+        aux3=Es1.frente
+        aux4=Es8.arriba
+        aux5=Es8.lado
+        aux6=Es8.frente
+        Es8.arriba=aux1
+        Es8.lado=aux2
+        Es8.frente=aux3
+        Es1.arriba=aux4
+        Es1.lado=aux5
+        Es1.frente=aux6
+    elif Es2.pos == 8 or Es8.pos == 2:
+        print "U' B2", permf,"B2 U"
+        aux1=Es2.arriba
+        aux2=Es2.lado
+        aux3=Es2.frente
+        aux4=Es8.arriba
+        aux5=Es8.lado
+        aux6=Es8.frente
+        Es8.arriba=aux1
+        Es8.lado=aux2
+        Es8.frente=aux3
+        Es2.arriba=aux4
+        Es2.lado=aux5
+        Es2.frente=aux6
+    elif Es3.pos == 8 or Es8.pos == 3:
+        print "U B2", permf,"U' B2"
+        aux1=Es3.arriba
+        aux2=Es3.lado
+        aux3=Es3.frente
+        aux4=Es8.arriba
+        aux5=Es8.lado
+        aux6=Es8.frente
+        Es8.arriba=aux1
+        Es8.lado=aux2
+        Es8.frente=aux3
+        Es3.arriba=aux4
+        Es3.lado=aux5
+        Es3.frente=aux6
+    elif Es4.pos == 8 or Es8.pos == 4:
+        print "U2 B2", permf,"B2 U2"
+        aux1=Es4.arriba
+        aux2=Es4.lado
+        aux3=Es4.frente
+        aux4=Es8.arriba
+        aux5=Es8.lado
+        aux6=Es8.frente
+        Es8.arriba=aux1
+        Es8.lado=aux2
+        Es8.frente=aux3
+        Es4.arriba=aux4
+        Es4.lado=aux5
+        Es4.frente=aux6
+    elif Es5.pos == 8 or Es8.pos == 5:
+        print "R2 U B2", permf,"B2 U' R2"
+        aux1=Es5.arriba
+        aux2=Es5.lado
+        aux3=Es5.frente
+        aux4=Es8.arriba
+        aux5=Es8.lado
+        aux6=Es8.frente
+        Es8.arriba=aux1
+        Es8.lado=aux2
+        Es8.frente=aux3
+        Es5.arriba=aux4
+        Es5.lado=aux5
+        Es5.frente=aux6
+    elif Es6.pos == 8 or Es8.pos == 6:
+        print "D2 R2", permf,"R2 D2"
+        aux1=Es5.arriba
+        aux2=Es5.lado
+        aux3=Es5.frente
+        aux4=Es8.arriba
+        aux5=Es8.lado
+        aux6=Es8.frente
+        Es8.arriba=aux1
+        Es8.lado=aux2
+        Es8.frente=aux3
+        Es5.arriba=aux4
+        Es5.lado=aux5
+        Es5.frente=aux6
+    elif Es7.pos == 8 or Es8.pos == 7:
+        print "D' R2", permf,"R2 D"
+        aux1=Es5.arriba
+        aux2=Es5.lado
+        aux3=Es5.frente
+        aux4=Es8.arriba
+        aux5=Es8.lado
+        aux6=Es8.frente
+        Es8.arriba=aux1
+        Es8.lado=aux2
+        Es8.frente=aux3
+        Es5.arriba=aux4
+        Es5.lado=aux5
+        Es5.frente=aux6
+
+
+
+    pos_all()
+    esq_act = [Es1.pos, Es2.pos, Es3.pos, Es4.pos, Es5.pos, Es6.pos, Es7.pos, Es8.pos]
+
+
+orientacion_arriba()
+orientacion_abajo()
+
+Es1.orientacion_chk()
+Es2.orientacion_chk()
+Es3.orientacion_chk()
+Es4.orientacion_chk()
+Es5.orientacion_chk()
+Es6.orientacion_chk()
+Es7.orientacion_chk()
+Es8.orientacion_chk()
+
+esq_ori = [Es1.ori,Es2.ori,Es3.ori,Es4.ori,Es5.ori,Es6.ori,Es7.ori,Es8.ori]
+
+if max(esq_ori) >= 1:
+    if Es1.ori == 1:
+
+        print "L2 D R' D' R D R' D' R \nU'R' D R D' U L2"
+
+    else:
+        print "L2 R' D R D' R' D R D'\nU' D R' D' R D R' D' R U L2"
+
+Es1.orientacion_chk()
+Es8.orientacion_chk()
+
+
+while lol == 1:
+    if sorted(esq_act) != esq_act:
+        pos_final()
+
+    else:
+        break
